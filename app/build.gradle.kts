@@ -4,16 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.beyzanurcelebi.kullanicigiris"
+    namespace = "com.example.seyahatnamem"
     compileSdk = 35
 
     defaultConfig {
-
-        applicationId = "com.beyzanurcelebi.seyahatnamem"
-
-
+        applicationId = "com.example.seyahatnamem"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
