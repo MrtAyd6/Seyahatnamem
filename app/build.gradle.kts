@@ -35,9 +35,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+<<<<<<< HEAD
     buildFeatures {
         viewBinding = true
     }
+=======
+>>>>>>> d0828b0 (Kullanici giris sayfasi eklendi)
 }
 
 dependencies {
