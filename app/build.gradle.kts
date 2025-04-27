@@ -8,7 +8,10 @@ android {
     compileSdk = 35
 
     defaultConfig {
+
         applicationId = "com.beyzanurcelebi.seyahatnamem"
+
+
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -36,6 +39,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {

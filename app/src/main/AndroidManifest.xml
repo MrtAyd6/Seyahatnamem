@@ -19,9 +19,6 @@
             android:name=".kayitOl"
             android:exported="false" />
         <activity
-            android:name=".KayitOl"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
