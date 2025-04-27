@@ -1,14 +1,11 @@
 package com.beyzanurcelebi.kullanicigiris
 
-
 import android.content.Intent
-
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
 import com.beyzanurcelebi.kullanicigiris.databinding.ActivityMainBinding
 
 
@@ -25,7 +22,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         binding.girisButonu.setOnClickListener{ //Giris Yap butonuna tıklandıgında hosgeldiniz sayfasına gitmek icin olusturuldu
             intent = Intent(applicationContext,Hosgeldiniz::class.java)
             startActivity(intent)
