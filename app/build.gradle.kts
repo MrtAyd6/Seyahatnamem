@@ -4,13 +4,15 @@ plugins {
 }
 
 android {
+
     namespace = "com.example.seyahatnamem"
     compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.seyahatnamem"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34
+
         versionCode = 1
         versionName = "1.0"
 
@@ -27,16 +29,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
+
+
 
     buildFeatures{
         viewBinding = true
     }
+
 }
 
 dependencies {

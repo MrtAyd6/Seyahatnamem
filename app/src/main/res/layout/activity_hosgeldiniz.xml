@@ -8,6 +8,7 @@
     android:background="@drawable/img"
     tools:context=".Hosgeldiniz">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
