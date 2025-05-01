@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/girisFragment">
+
+    <fragment
+        android:id="@+id/girisFragment"
+        android:name="com.example.seyahatnamem.GirisFragment"
+        android:label="fragment_giris"
+        tools:layout="@layout/fragment_giris" >
+        <action
+            android:id="@+id/action_girisFragment_to_hosgeldinizFragment"
+            app:destination="@id/hosgeldinizFragment" />
+        <action
+            android:id="@+id/action_girisFragment_to_kayitOlFragment"
+            app:destination="@id/kayitOlFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kayitOlFragment"
+        android:name="com.example.seyahatnamem.KayitOlFragment"
+        android:label="fragment_kayit_ol"
+        tools:layout="@layout/fragment_kayit_ol" >
+        <action
+            android:id="@+id/action_kayitOlFragment_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hosgeldinizFragment"
+        android:name="com.example.seyahatnamem.HosgeldinizFragment"
+        android:label="fragment_hosgeldiniz"
+        tools:layout="@layout/fragment_hosgeldiniz" >
+        <action
+            android:id="@+id/action_hosgeldinizFragment_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
+</navigation>

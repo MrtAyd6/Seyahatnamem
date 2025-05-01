@@ -23,16 +23,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        //Giriş Yap butonuna tıklandığında hoşgeldiniz sayfasına gitmek için oluşturuldu
-        binding.girisButonu.setOnClickListener{
-            intent = Intent(applicationContext, Hosgeldiniz::class.java)
-            startActivity(intent)
-        }
 
-        //Kaydol butonuna tıklandığında kayıt olma sayfasına geçmek için oluşturuldu
-        binding.kaydolmaButonu.setOnClickListener{
-            intent = Intent(applicationContext, kayitOl::class.java)
-            startActivity(intent)
-        }
     }
 }
