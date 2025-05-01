@@ -6,13 +6,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.seyahatnamem.databinding.ActivityMainBinding
+import com.example.seyahatnamem.databinding.ActivityKayitOlBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+
+class kayitOl : AppCompatActivity() {
+    private lateinit var binding: ActivityKayitOlBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityKayitOlBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         enableEdgeToEdge()
@@ -22,16 +23,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        //Giriş Yap butonuna tıklandığında hoşgeldiniz sayfasına gitmek için oluşturuldu
-        binding.girisButonu.setOnClickListener{
-            intent = Intent(applicationContext, Hosgeldiniz::class.java)
-            startActivity(intent)
-        }
-
-        //Kaydol butonuna tıklandığında kayıt olma sayfasına geçmek için oluşturuldu
-        binding.kaydolmaButonu.setOnClickListener{
-            intent = Intent(applicationContext, kayitOl::class.java)
+        
+        //Girişe dön butonuna basıldıında ana sayfaya yönlendirilmesi için buton oluşturuldu
+        binding.giriseDonButonu.setOnClickListener{
+            intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
         }
     }
