@@ -1,14 +1,13 @@
-package com.beyzanurcelebi.kullanicigiris
+package com.example.seyahatnamem
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.beyzanurcelebi.kullanicigiris.databinding.ActivityHosgeldinizBinding
-import com.beyzanurcelebi.kullanicigiris.databinding.ActivityMainBinding
+import com.example.seyahatnamem.databinding.ActivityHosgeldinizBinding
+
 
 class Hosgeldiniz : AppCompatActivity() {
     private lateinit var binding: ActivityHosgeldinizBinding
@@ -25,7 +24,8 @@ class Hosgeldiniz : AppCompatActivity() {
             insets
         }
 
-        binding.cikisYapButonu.setOnClickListener { // Çıkış Yap butonuna bastığında ana sayfaya yönlendirmesi için buton oluşturuldu
+        // Çıkış Yap butonuna bastığında ana sayfaya yönlendirmesi için buton oluşturuldu
+        binding.cikisYapButonu.setOnClickListener {
             intent = Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
         }

@@ -1,4 +1,4 @@
-package com.beyzanurcelebi.kullanicigiris
+package com.example.seyahatnamem
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.beyzanurcelebi.kullanicigiris.databinding.ActivityKayitOlBinding
-import com.beyzanurcelebi.kullanicigiris.databinding.ActivityMainBinding
+import com.example.seyahatnamem.databinding.ActivityKayitOlBinding
+
 
 class kayitOl : AppCompatActivity() {
     private lateinit var binding: ActivityKayitOlBinding
@@ -23,14 +23,11 @@ class kayitOl : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        binding.giriseDonButonu.setOnClickListener { // Girişe Dön butonuna basıldığında ana sayfaya yönlendirmesi için buton oluşturuldu
-            intent = Intent(applicationContext,MainActivity::class.java)
+        
+        //Girişe dön butonuna basıldıında ana sayfaya yönlendirilmesi için buton oluşturuldu
+        binding.giriseDonButonu.setOnClickListener{
+            intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
         }
-
-
-        }
-
-
     }
+}
