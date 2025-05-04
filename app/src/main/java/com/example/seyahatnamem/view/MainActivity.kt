@@ -1,11 +1,11 @@
-package com.example.seyahatnamem
+package com.example.seyahatnamem.view
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.seyahatnamem.R
 import com.example.seyahatnamem.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,16 +23,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        //Giriş Yap butonuna tıklandığında hoşgeldiniz sayfasına gitmek için oluşturuldu
-        binding.girisButonu.setOnClickListener{
-            intent = Intent(applicationContext, Hosgeldiniz::class.java)
-            startActivity(intent)
-        }
 
-        //Kaydol butonuna tıklandığında kayıt olma sayfasına geçmek için oluşturuldu
-        binding.kaydolmaButonu.setOnClickListener{
-            intent = Intent(applicationContext, kayitOl::class.java)
-            startActivity(intent)
-        }
     }
 }

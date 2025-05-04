@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/girisFragment">
+
+    <fragment
+        android:id="@+id/girisFragment"
+        android:name="com.example.seyahatnamem.view.GirisFragment"
+        android:label="fragment_giris"
+        tools:layout="@layout/fragment_giris" >
+        <action
+            android:id="@+id/action_girisFragment_to_kayitOlFragment"
+            app:destination="@id/kayitOlFragment" />
+        <action
+            android:id="@+id/action_girisFragment_to_seyahatlerimFragment"
+            app:destination="@id/seyahatlerimFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kayitOlFragment"
+        android:name="com.example.seyahatnamem.view.KayitOlFragment"
+        android:label="fragment_kayit_ol"
+        tools:layout="@layout/fragment_kayit_ol" >
+        <action
+            android:id="@+id/action_kayitOlFragment_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hosgeldinizFragment"
+        android:name="com.example.seyahatnamem.view.HosgeldinizFragment"
+        android:label="fragment_hosgeldiniz"
+        tools:layout="@layout/fragment_hosgeldiniz" >
+        <action
+            android:id="@+id/action_hosgeldinizFragment_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seyahatlerimFragment"
+        android:name="com.example.seyahatnamem.view.SeyahatlerimFragment"
+        android:label="fragment_seyahatlerim"
+        tools:layout="@layout/fragment_seyahatlerim" >
+        <action
+            android:id="@+id/action_seyahatlerimFragment_to_sehirEkleFragment"
+            app:destination="@id/sehirEkleFragment" />
+        <action
+            android:id="@+id/action_seyahatlerimFragment_to_sehirDetayFragment"
+            app:destination="@id/sehirDetayFragment" />
+        <action
+            android:id="@+id/action_seyahatlerimFragment_to_hosgeldinizFragment"
+            app:destination="@id/hosgeldinizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sehirEkleFragment"
+        android:name="com.example.seyahatnamem.view.SehirEkleFragment"
+        android:label="fragment_sehir_ekle"
+        tools:layout="@layout/fragment_sehir_ekle" >
+        <action
+            android:id="@+id/action_sehirEkleFragment_to_seyahatlerimFragment"
+            app:destination="@id/seyahatlerimFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sehirDetayFragment"
+        android:name="com.example.seyahatnamem.view.SehirDetayFragment"
+        android:label="fragment_sehir_detay"
+        tools:layout="@layout/fragment_sehir_detay" >
+        <action
+            android:id="@+id/action_sehirDetayFragment_to_geziEkleFragment"
+            app:destination="@id/geziEkleFragment" />
+        <action
+            android:id="@+id/action_sehirDetayFragment_to_geziDetayFragment"
+            app:destination="@id/geziDetayFragment" />
+        <argument
+            android:name="secilenSehir"
+            app:argType="com.example.seyahatnamem.model.Sehir" />
+    </fragment>
+    <fragment
+        android:id="@+id/geziEkleFragment"
+        android:name="com.example.seyahatnamem.view.GeziEkleFragment"
+        android:label="fragment_gezi_ekle"
+        tools:layout="@layout/fragment_gezi_ekle" >
+        <action
+            android:id="@+id/action_geziEkleFragment_to_sehirDetayFragment"
+            app:destination="@id/sehirDetayFragment" />
+        <argument
+            android:name="secilenSehir"
+            app:argType="com.example.seyahatnamem.model.Sehir" />
+    </fragment>
+    <fragment
+        android:id="@+id/geziDetayFragment"
+        android:name="com.example.seyahatnamem.view.GeziDetayFragment"
+        android:label="fragment_gezi_detay"
+        tools:layout="@layout/fragment_gezi_detay" >
+        <argument
+            android:name="secilenGezi"
+            app:argType="com.example.seyahatnamem.model.Gezi" />
+    </fragment>
+</navigation>

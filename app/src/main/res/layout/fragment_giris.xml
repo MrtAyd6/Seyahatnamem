@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img"
-    tools:context=".kayitOl">
+    tools:context=".view.GirisFragment">
+
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="61dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_account_circle_24" />
 
     <EditText
-        android:id="@+id/kayitKullaniciAdi"
+        android:id="@+id/FirstEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -26,7 +29,7 @@
         android:background="@drawable/edittextarkaplan"
         android:drawableLeft="@drawable/kucuk_account"
         android:ems="10"
-        android:hint="Kullanıcı adınızı oluşturun"
+        android:hint="Kullanıcı adını giriniz"
         android:inputType="text"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +38,7 @@
 
 
     <EditText
-        android:id="@+id/kayitParola"
+        android:id="@+id/SecondEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -44,33 +47,33 @@
         android:background="@drawable/edittextarkaplan"
         android:drawableLeft="@drawable/baseline_lock_24"
         android:ems="10"
-        android:hint="Parola oluşturun"
-        android:inputType="text"
+        android:hint="Parola"
+        android:inputType="textPassword"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kayitKullaniciAdi" />
+        app:layout_constraintTop_toBottomOf="@+id/FirstEditText" />
 
     <Button
-        android:id="@+id/giriseDonButonu"
+        android:id="@+id/girisButonu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/buttonarkaplan"
-        android:text="Girişe Dön"
+        android:text="Giriş Yap"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kayitParola" />
+        app:layout_constraintTop_toBottomOf="@+id/SecondEditText" />
 
     <Button
-        android:id="@+id/KayitKaydetButonu"
+        android:id="@+id/kaydolmaButonu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
         android:layout_marginEnd="70dp"
         android:background="@drawable/edittextarkaplan"
-        android:text="Kaydet"
+        android:text="Kaydol"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kayitParola" />
+        app:layout_constraintTop_toTopOf="@+id/girisButonu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
