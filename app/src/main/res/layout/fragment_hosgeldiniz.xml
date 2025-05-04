@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/img"
-    tools:context=".HosgeldinizFragment">
+    tools:context=".view.HosgeldinizFragment">
 
     <ImageView
         android:id="@+id/imageView"
