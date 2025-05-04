@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/girisFragment"
-        android:name="com.example.seyahatnamem.GirisFragment"
+        android:name="com.example.seyahatnamem.view.GirisFragment"
         android:label="fragment_giris"
         tools:layout="@layout/fragment_giris" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/kayitOlFragment"
-        android:name="com.example.seyahatnamem.KayitOlFragment"
+        android:name="com.example.seyahatnamem.view.KayitOlFragment"
         android:label="fragment_kayit_ol"
         tools:layout="@layout/fragment_kayit_ol" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/hosgeldinizFragment"
-        android:name="com.example.seyahatnamem.HosgeldinizFragment"
+        android:name="com.example.seyahatnamem.view.HosgeldinizFragment"
         android:label="fragment_hosgeldiniz"
         tools:layout="@layout/fragment_hosgeldiniz" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/seyahatlerimFragment"
-        android:name="com.example.seyahatnamem.SeyahatlerimFragment"
+        android:name="com.example.seyahatnamem.view.SeyahatlerimFragment"
         android:label="fragment_seyahatlerim"
         tools:layout="@layout/fragment_seyahatlerim" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/sehirEkleFragment"
-        android:name="com.example.seyahatnamem.SehirEkleFragment"
+        android:name="com.example.seyahatnamem.view.SehirEkleFragment"
         android:label="fragment_sehir_ekle"
         tools:layout="@layout/fragment_sehir_ekle" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/sehirDetayFragment"
-        android:name="com.example.seyahatnamem.SehirDetayFragment"
+        android:name="com.example.seyahatnamem.view.SehirDetayFragment"
         android:label="fragment_sehir_detay"
         tools:layout="@layout/fragment_sehir_detay" >
         <action
@@ -70,19 +70,29 @@
         <action
             android:id="@+id/action_sehirDetayFragment_to_geziDetayFragment"
             app:destination="@id/geziDetayFragment" />
+        <argument
+            android:name="secilenSehir"
+            app:argType="com.example.seyahatnamem.model.Sehir" />
     </fragment>
     <fragment
         android:id="@+id/geziEkleFragment"
-        android:name="com.example.seyahatnamem.GeziEkleFragment"
+        android:name="com.example.seyahatnamem.view.GeziEkleFragment"
         android:label="fragment_gezi_ekle"
         tools:layout="@layout/fragment_gezi_ekle" >
         <action
             android:id="@+id/action_geziEkleFragment_to_sehirDetayFragment"
             app:destination="@id/sehirDetayFragment" />
+        <argument
+            android:name="secilenSehir"
+            app:argType="com.example.seyahatnamem.model.Sehir" />
     </fragment>
     <fragment
         android:id="@+id/geziDetayFragment"
-        android:name="com.example.seyahatnamem.GeziDetayFragment"
+        android:name="com.example.seyahatnamem.view.GeziDetayFragment"
         android:label="fragment_gezi_detay"
-        tools:layout="@layout/fragment_gezi_detay" />
+        tools:layout="@layout/fragment_gezi_detay" >
+        <argument
+            android:name="secilenGezi"
+            app:argType="com.example.seyahatnamem.model.Gezi" />
+    </fragment>
 </navigation>

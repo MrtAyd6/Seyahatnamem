@@ -1,4 +1,4 @@
-package com.example.seyahatnamem
+package com.example.seyahatnamem.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -30,23 +30,24 @@ class GirisFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.girisButonu.setOnClickListener {
-            girisYap(it)       //Giriş Yap butonuna tıklandığında hoşgeldiniz sayfasına gitmek için oluşturuldu
+            girisYap(it)
         }
 
         binding.kaydolmaButonu.setOnClickListener {
-            kaydol(it)         //Kaydol butonuna tıklandığında kayıt olma sayfasına geçmek için oluşturuldu
+            kaydol(it)
         }
 
     }
 
 
 
-
+    //Giriş Yap butonuna tıklandığında seyahatlerim sayfasına gitmek için oluşturuldu
     fun girisYap(view: View){
-        val action = GirisFragmentDirections.actionGirisFragmentToHosgeldinizFragment()
+        val action = GirisFragmentDirections.actionGirisFragmentToSeyahatlerimFragment()
         Navigation.findNavController(view).navigate(action)
     }
 
+    //Kaydol butonuna tıklandığında kayıt olma sayfasına geçmek için oluşturuldu
     fun kaydol(view: View){
         val action = GirisFragmentDirections.actionGirisFragmentToKayitOlFragment()
         Navigation.findNavController(view).navigate(action)

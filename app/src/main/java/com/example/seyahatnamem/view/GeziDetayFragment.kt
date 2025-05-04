@@ -1,13 +1,14 @@
-package com.example.seyahatnamem
+package com.example.seyahatnamem.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.seyahatnamem.R
 
 
-class SehirEkleFragment : Fragment() {
+class GeziDetayFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class SehirEkleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sehir_ekle, container, false)
+        return inflater.inflate(R.layout.fragment_gezi_detay, container, false)
     }
 
 

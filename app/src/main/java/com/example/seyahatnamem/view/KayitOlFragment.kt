@@ -1,4 +1,4 @@
-package com.example.seyahatnamem
+package com.example.seyahatnamem.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.seyahatnamem.databinding.FragmentGirisBinding
 import com.example.seyahatnamem.databinding.FragmentKayitOlBinding
 
 
