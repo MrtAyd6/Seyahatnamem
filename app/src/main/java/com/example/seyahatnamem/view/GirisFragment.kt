@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.seyahatnamem.databinding.FragmentGirisBinding
+import com.example.seyahatnamem.model.Kullanici
 
 
 class GirisFragment : Fragment() {
@@ -37,6 +38,8 @@ class GirisFragment : Fragment() {
             kaydol(it)
         }
 
+
+
     }
 
 
@@ -57,4 +60,6 @@ class GirisFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

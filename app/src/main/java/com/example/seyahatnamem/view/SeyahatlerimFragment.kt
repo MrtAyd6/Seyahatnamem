@@ -31,6 +31,11 @@ class SeyahatlerimFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.seyahatEkleButton.setOnClickListener { seyahatEkle(it) }
 
+        binding.profilSayfasinaGitButonu.setOnClickListener {
+            profileGit(it)
+        }
+
+
 
     }
 
@@ -47,4 +52,11 @@ class SeyahatlerimFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun profileGit(view: View){
+        val action = SeyahatlerimFragmentDirections.actionSeyahatlerimFragmentToHosgeldinizFragment()
+        Navigation.findNavController(view).navigate(action)
+    }
+
+
 }

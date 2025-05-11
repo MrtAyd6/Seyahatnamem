@@ -32,7 +32,10 @@ class HosgeldinizFragment : Fragment() {
         binding.cikisYapButonu.setOnClickListener{
             cikisYap(it)    //// Çıkış Yap butonuna bastığında ana sayfaya yönlendirmesi için buton oluşturuldu
         }
+        val kullaniciAdi = "beyza6161" //ILERIDE CLASS'TAN ALINACAK!!!!!!
+        binding.kullaniciAdiniGosterenText.text = "Kullanıcı Adı : ${kullaniciAdi}"
 
+        binding.parolayGosterenText.text = "Parola :  ********"
 
 
     }
