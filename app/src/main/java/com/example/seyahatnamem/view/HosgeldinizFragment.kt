@@ -7,14 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.seyahatnamem.databinding.FragmentHosgeldinizBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HosgeldinizFragment : Fragment() {
     private var _binding: FragmentHosgeldinizBinding? = null
     private val binding get() = _binding!!
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        auth = Firebase.auth
     }
 
     override fun onCreateView(
@@ -32,10 +36,13 @@ class HosgeldinizFragment : Fragment() {
         binding.cikisYapButonu.setOnClickListener{
             cikisYap(it)    //// Çıkış Yap butonuna bastığında ana sayfaya yönlendirmesi için buton oluşturuldu
         }
-        val kullaniciAdi = "beyza6161" //ILERIDE CLASS'TAN ALINACAK!!!!!!
-        binding.kullaniciAdiniGosterenText.text = "Kullanıcı Adı : ${kullaniciAdi}"
 
-        binding.parolayGosterenText.text = "Parola :  ********"
+
+        val kullaniciEmail = FirebaseAuth.getInstance().currentUser?.email
+
+        binding.kullaniciAdiniGosterenText.text = "Kullanıcı Adı : ${kullaniciEmail}"
+
+        binding.parolayGosterenText.text = "Parola :  ********"   //doldur
 
 
     }
@@ -45,6 +52,7 @@ class HosgeldinizFragment : Fragment() {
 
 
     fun cikisYap(view: View){
+        auth.signOut()
         val action = HosgeldinizFragmentDirections.actionHosgeldinizFragmentToGirisFragment()
         Navigation.findNavController(view).navigate(action)
     }
