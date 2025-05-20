@@ -7,14 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.seyahatnamem.databinding.FragmentHosgeldinizBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HosgeldinizFragment : Fragment() {
     private var _binding: FragmentHosgeldinizBinding? = null
     private val binding get() = _binding!!
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        auth = Firebase.auth
     }
 
     override fun onCreateView(
@@ -34,6 +38,12 @@ class HosgeldinizFragment : Fragment() {
         }
 
 
+        val kullaniciEmail = FirebaseAuth.getInstance().currentUser?.email
+
+        binding.kullaniciAdiniGosterenText.text = "E-mail : ${kullaniciEmail}"
+
+        binding.parolayGosterenText.text = "Parola :  ********"   //doldur
+
 
     }
 
@@ -42,6 +52,7 @@ class HosgeldinizFragment : Fragment() {
 
 
     fun cikisYap(view: View){
+        auth.signOut()
         val action = HosgeldinizFragmentDirections.actionHosgeldinizFragmentToGirisFragment()
         Navigation.findNavController(view).navigate(action)
     }

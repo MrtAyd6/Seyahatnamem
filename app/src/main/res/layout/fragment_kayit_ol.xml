@@ -44,7 +44,7 @@
         android:drawableLeft="@drawable/baseline_lock_24"
         android:ems="10"
         android:hint="Parola oluşturun"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

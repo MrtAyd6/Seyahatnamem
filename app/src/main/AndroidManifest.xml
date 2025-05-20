@@ -12,14 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Seyahatnamem"
         tools:targetApi="31">
-        <activity
 
-            android:name=".kayitOl"
-            android:exported="false" />
-        <activity
-            android:name=".Hosgeldiniz"
-
-            android:exported="false" />
         <activity
             android:name=".view.MainActivity"
             android:exported="true">
@@ -30,5 +23,5 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

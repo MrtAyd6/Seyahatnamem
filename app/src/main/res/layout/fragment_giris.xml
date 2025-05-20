@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/baseline_account_circle_24" />
 
     <EditText
-        android:id="@+id/FirstEditText"
+        android:id="@+id/EmailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -29,8 +29,8 @@
         android:background="@drawable/edittextarkaplan"
         android:drawableLeft="@drawable/kucuk_account"
         android:ems="10"
-        android:hint="Kullanıcı adını giriniz"
-        android:inputType="text"
+        android:hint="Email adresinizi giriniz"
+        android:inputType="textEmailAddress"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
 
 
     <EditText
-        android:id="@+id/SecondEditText"
+        android:id="@+id/ParolaText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -52,7 +52,7 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FirstEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailText" />
 
     <Button
         android:id="@+id/girisButonu"
@@ -63,7 +63,7 @@
         android:background="@drawable/buttonarkaplan"
         android:text="Giriş Yap"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SecondEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/ParolaText" />
 
     <Button
         android:id="@+id/kaydolmaButonu"

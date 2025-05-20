@@ -71,7 +71,7 @@
             android:id="@+id/action_sehirDetayFragment_to_geziDetayFragment"
             app:destination="@id/geziDetayFragment" />
         <argument
-            android:name="secilenSehir"
+            android:name="secilensehir"
             app:argType="com.example.seyahatnamem.model.Sehir" />
     </fragment>
     <fragment

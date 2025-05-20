@@ -37,7 +37,7 @@ class SehirDetayFragment : Fragment() {
 
     private fun geziEkle(view: View){
         arguments?.let {
-            val secilenSehir = SehirDetayFragmentArgs.fromBundle(it).secilenSehir
+            val secilenSehir = SehirDetayFragmentArgs.fromBundle(it).secilensehir
             val action = SehirDetayFragmentDirections.actionSehirDetayFragmentToGeziEkleFragment(secilenSehir)
             Navigation.findNavController(view).navigate(action)
         }
