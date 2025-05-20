@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
+import com.example.seyahatnamem.R
 import com.example.seyahatnamem.databinding.FragmentHosgeldinizBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -34,7 +36,8 @@ class HosgeldinizFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.cikisYapButonu.setOnClickListener{
-            cikisYap(it)    //// Çıkış Yap butonuna bastığında ana sayfaya yönlendirmesi için buton oluşturuldu
+            cikisYap(it) //// Çıkış Yap butonuna bastığında ana sayfaya yönlendirmesi için buton oluşturuldu
+
         }
 
 
@@ -54,7 +57,10 @@ class HosgeldinizFragment : Fragment() {
     fun cikisYap(view: View){
         auth.signOut()
         val action = HosgeldinizFragmentDirections.actionHosgeldinizFragmentToGirisFragment()
-        Navigation.findNavController(view).navigate(action)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_graph, true) // geri dönmesin
+            .build()
+        Navigation.findNavController(view).navigate(action,navOptions)
     }
 
 

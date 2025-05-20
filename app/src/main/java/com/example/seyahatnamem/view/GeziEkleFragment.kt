@@ -136,8 +136,9 @@ class GeziEkleFragment : Fragment() {
 
                         val geziMap = hashMapOf<String, Any>()
                         val yorum = binding.yorumEkle.text.toString()
+                        val geziAdi = binding.geziAdiText.text.toString()
                         geziMap.put("gorselUrl", downloadUrl)
-
+                        geziMap.put("geziAdi",geziAdi)
                         geziMap.put("yorum", yorum)
 
 
