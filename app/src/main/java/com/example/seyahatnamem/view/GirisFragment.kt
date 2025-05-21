@@ -41,6 +41,7 @@ class GirisFragment : Fragment() {
 
         binding.girisButonu.setOnClickListener {
             girisYap(it)
+
         }
 
         binding.kaydolmaButonu.setOnClickListener {
@@ -66,6 +67,7 @@ class GirisFragment : Fragment() {
         val parola = binding.ParolaText.text.toString()
         if(email.isNotEmpty() && parola.isNotEmpty()){
             auth.signInWithEmailAndPassword(email,parola).addOnSuccessListener {
+                Toast.makeText(requireContext(),"Giriş Başarılı",Toast.LENGTH_SHORT).show()
                 val action = GirisFragmentDirections.actionGirisFragmentToSeyahatlerimFragment()
                 Navigation.findNavController(view).navigate(action)
             }.addOnFailureListener { exceprion ->
@@ -74,7 +76,7 @@ class GirisFragment : Fragment() {
         }
     }
 
-    //Kaydol butonuna tıklandığında kayıt olma sayfasına geçmek için oluşturuldu
+    //Kaydol butonuna tıklandığında kayıt olma sayfasına geçmek için oluşturuldu.
     fun kaydol(view: View){
         val action = GirisFragmentDirections.actionGirisFragmentToKayitOlFragment()
         Navigation.findNavController(view).navigate(action)

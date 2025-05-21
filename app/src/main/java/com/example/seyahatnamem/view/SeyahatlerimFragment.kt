@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seyahatnamem.adapter.SeyahatlerimAdapter
 import com.example.seyahatnamem.databinding.FragmentSeyahatlerimBinding
 import com.example.seyahatnamem.model.Gezi
+import com.example.seyahatnamem.model.Kullanici
 import com.example.seyahatnamem.model.Sehir
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -19,6 +20,7 @@ import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
+import com.squareup.picasso.Picasso
 
 
 class SeyahatlerimFragment : Fragment() {
@@ -53,12 +55,10 @@ class SeyahatlerimFragment : Fragment() {
             profileGit(it)
         }
         firestoreVerileriAl()
-
+        firestorePPVerileriAl()
         adapter = SeyahatlerimAdapter(sehirList)
         binding.seyahatRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.seyahatRecycler.adapter = adapter
-
-
 
     }
 
@@ -89,16 +89,10 @@ class SeyahatlerimFragment : Fragment() {
         }
     }
 
-
-
     private fun seyahatEkle(view: View){
         val action = SeyahatlerimFragmentDirections.actionSeyahatlerimFragmentToSehirEkleFragment()
         Navigation.findNavController(view).navigate(action)
     }
-
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -109,6 +103,30 @@ class SeyahatlerimFragment : Fragment() {
         val action = SeyahatlerimFragmentDirections.actionSeyahatlerimFragmentToHosgeldinizFragment()
         Navigation.findNavController(view).navigate(action)
     }
+    private  fun firestorePPVerileriAl(){
+        val kullaniciBilgiListesi = ArrayList<Kullanici>()
+        val targetEmail = FirebaseAuth.getInstance().currentUser?.email
+        db.collection("KullaniciBilgi").whereEqualTo("ID",targetEmail).addSnapshotListener { value, error ->
+            if(error != null){
+                Toast.makeText(requireContext(),error.localizedMessage, Toast.LENGTH_LONG).show()
+            }else{
+                println("email :"+targetEmail)
+                if(value != null){
+                    if(!value.isEmpty){
+                        //boş değilse
+                        kullaniciBilgiListesi.clear()
+                        val documents = value.documents
+                        for(document in documents){
 
+                            val ppUrl = document.get("ppUrl") as String
 
-}
+                            val kullanici = Kullanici("${targetEmail}","*****",ppUrl)
+                            kullaniciBilgiListesi.add(kullanici)
+                        }
+                        val pp = Picasso.get().load(kullaniciBilgiListesi[0].profilResmi).into(binding.profilSayfasinaGitButonu)
+                    }
+                }
+            }
+        }
+
+}}

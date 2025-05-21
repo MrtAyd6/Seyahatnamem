@@ -136,12 +136,13 @@ class GeziEkleFragment : Fragment() {
 
                         val geziMap = hashMapOf<String, Any>()
                         val yorum = binding.yorumEkle.text.toString()
+                        val geziAdi = binding.geziAdiText.text.toString()
                         geziMap.put("gorselUrl", downloadUrl)
-
+                        geziMap.put("geziAdi",geziAdi)
                         geziMap.put("yorum", yorum)
 
 
-                        //BURDAYZ 19MAYIS
+
                         db.collection("Sehirler").whereEqualTo("ID", targetEmail).whereEqualTo("Sehir_adi", secilenSehir.sehirAdi).get().addOnSuccessListener { documents ->
 
                             for (document in documents) {

@@ -115,7 +115,7 @@ class SehirEkleFragment : Fragment() {
 
 
             db.collection("Sehirler").add(sehirMap).addOnSuccessListener { documentReference ->
-                //veri database yüklendi
+                //veri database'e yüklendi
                 Toast.makeText(requireContext(), "şehir eklendi", Toast.LENGTH_LONG).show()
                 val action = SehirEkleFragmentDirections.actionSehirEkleFragmentToSeyahatlerimFragment()
                 Navigation.findNavController(view).navigate(action)

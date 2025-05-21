@@ -33,6 +33,8 @@
         tools:layout="@layout/fragment_hosgeldiniz" >
         <action
             android:id="@+id/action_hosgeldinizFragment_to_girisFragment"
+            app:popUpTo="@id/hosgeldinizFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/girisFragment" />
     </fragment>
     <fragment
@@ -92,7 +94,7 @@
         android:label="fragment_gezi_detay"
         tools:layout="@layout/fragment_gezi_detay" >
         <argument
-            android:name="secilenGezi"
+            android:name="geziListe"
             app:argType="com.example.seyahatnamem.model.Gezi" />
     </fragment>
 </navigation>

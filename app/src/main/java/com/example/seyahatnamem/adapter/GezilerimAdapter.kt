@@ -9,6 +9,7 @@ import com.example.seyahatnamem.model.Gezi
 import com.example.seyahatnamem.view.SehirDetayFragmentDirections
 import com.example.seyahatnamem.view.SehirEkleFragmentDirections
 import com.example.seyahatnamem.view.SeyahatlerimFragmentDirections
+import com.squareup.picasso.Picasso
 
 class GezilerimAdapter(private val geziListe: ArrayList<Gezi>) : RecyclerView.Adapter<GezilerimAdapter.GeziHolder>() {
     class GeziHolder(val binding: GeziRowBinding) : RecyclerView.ViewHolder(binding.root){}
@@ -29,10 +30,12 @@ class GezilerimAdapter(private val geziListe: ArrayList<Gezi>) : RecyclerView.Ad
         holder: GeziHolder,
         position: Int
     ) {
-        holder.binding.recyclerGeziAdi.text = geziListe[position].geziAdi
+        holder.binding.recyclerGeziAdi.text = "${position +1}- " + geziListe[position].geziAdi
+        Picasso.get().load(geziListe[position].gorselUrl).into(holder.binding.recyclerGeziKucukGorsel)
+
         holder.itemView.setOnClickListener {
-            val secilenGezi = geziListe[position]
-            val action = SehirDetayFragmentDirections.actionSehirDetayFragmentToGeziDetayFragment(secilenGezi)
+
+            val action = SehirDetayFragmentDirections.actionSehirDetayFragmentToGeziDetayFragment(geziListe[position])
             Navigation.findNavController(it).navigate(action)
         }
     }
