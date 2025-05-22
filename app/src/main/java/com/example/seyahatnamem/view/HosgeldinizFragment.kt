@@ -23,6 +23,7 @@ import com.example.seyahatnamem.databinding.FragmentHosgeldinizBinding
 import com.example.seyahatnamem.model.Gezi
 import com.example.seyahatnamem.model.Kullanici
 import com.example.seyahatnamem.model.Sehir
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -77,7 +78,7 @@ class HosgeldinizFragment : Fragment() {
         }
 
         binding.sifreDegistirmeButonu.setOnClickListener {
-            sifreDegis(it)
+            sifreDegistir(it)
         }
 
 
@@ -145,9 +146,7 @@ class HosgeldinizFragment : Fragment() {
 
     }
 
-    fun sifreDegis(view: View){
 
-    }
 
     fun profilResminiVeriTabaninaKaydet(view: View){
 
@@ -212,6 +211,37 @@ class HosgeldinizFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun sifreDegistir(view : View){
+        val user = Firebase.auth.currentUser
+        val email = user?.email
+        val eskiSifre = binding.eskiSifre.text.toString()
+        val yeniSifre = binding.yeniSifre.text.toString()
+
+        if(eskiSifre == yeniSifre){
+            Toast.makeText(requireContext(),"Ayni sifreyi kullanamazsiniz.",Toast.LENGTH_SHORT).show()
+        }else {
+
+            val credential = EmailAuthProvider.getCredential(email!!, eskiSifre) // kullanicinin eski verilerine erisim.
+
+            user.reauthenticate(credential).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Şifre doğrulandı
+                    user.updatePassword(yeniSifre).addOnCompleteListener { updateTask ->
+                        if (updateTask.isSuccessful) {
+                            Toast.makeText(context, "Şifre başarıyla güncellendi", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(context, "Şifre güncellenemedi", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } else {
+                    Toast.makeText(context, "Eski şifre hatalı", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
     }
 
     override fun onDestroyView() {

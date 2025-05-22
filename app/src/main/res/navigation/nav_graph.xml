@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_sehirEkleFragment_to_seyahatlerimFragment"
             app:destination="@id/seyahatlerimFragment" />
+        <argument
+            android:name="sehirListesi"
+            app:argType="string[]" />
     </fragment>
     <fragment
         android:id="@+id/sehirDetayFragment"

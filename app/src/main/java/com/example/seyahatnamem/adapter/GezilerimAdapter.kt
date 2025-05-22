@@ -30,7 +30,7 @@ class GezilerimAdapter(private val geziListe: ArrayList<Gezi>) : RecyclerView.Ad
         holder: GeziHolder,
         position: Int
     ) {
-        holder.binding.recyclerGeziAdi.text = "${position +1}- " + geziListe[position].geziAdi
+        holder.binding.recyclerGeziAdi.text = geziListe[position].geziAdi
         Picasso.get().load(geziListe[position].gorselUrl).into(holder.binding.recyclerGeziKucukGorsel)
 
         holder.itemView.setOnClickListener {

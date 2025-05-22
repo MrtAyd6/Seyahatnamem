@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_9" />
+        app:srcCompat="@drawable/img_10" />
 
     <EditText
         android:id="@+id/EmailText"

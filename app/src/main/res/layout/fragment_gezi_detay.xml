@@ -34,7 +34,7 @@
         android:layout_width="368dp"
         android:layout_height="303dp"
         android:layout_marginTop="50dp"
-        android:text="Yorum yok..."
+        android:text=""
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

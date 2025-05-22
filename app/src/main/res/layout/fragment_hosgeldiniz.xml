@@ -7,16 +7,16 @@
     android:background="#F8F6FD"
     tools:context=".view.HosgeldinizFragment">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilResmi"
         android:onClick="profilResmiEkle"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_account_circle_24"/>
+        android:src="@drawable/baseline_account_circle_24"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/bilgiKart"
@@ -35,7 +35,7 @@
 
     <LinearLayout
         android:layout_width="403dp"
-        android:layout_height="338dp"
+        android:layout_height="360dp"
         android:layout_marginEnd="8dp"
         android:orientation="vertical"
 
@@ -67,7 +67,31 @@
             android:text="Parola : "
             android:textColor="#000000"
             android:textSize="18sp" />
+        <EditText
+            android:id="@+id/eskiSifre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:padding="8dp"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:hint="Eski parola : ">
 
+        </EditText>
+
+        <EditText
+            android:id="@+id/yeniSifre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:padding="8dp"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:hint="Yeni parola : ">
+
+        </EditText>
 
         <Button
             android:id="@+id/sifreDegistirmeButonu"
