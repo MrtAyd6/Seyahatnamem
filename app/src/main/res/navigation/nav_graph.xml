@@ -33,6 +33,8 @@
         tools:layout="@layout/fragment_hosgeldiniz" >
         <action
             android:id="@+id/action_hosgeldinizFragment_to_girisFragment"
+            app:popUpTo="@id/hosgeldinizFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/girisFragment" />
     </fragment>
     <fragment
@@ -58,6 +60,9 @@
         <action
             android:id="@+id/action_sehirEkleFragment_to_seyahatlerimFragment"
             app:destination="@id/seyahatlerimFragment" />
+        <argument
+            android:name="sehirListesi"
+            app:argType="string[]" />
     </fragment>
     <fragment
         android:id="@+id/sehirDetayFragment"
@@ -71,7 +76,7 @@
             android:id="@+id/action_sehirDetayFragment_to_geziDetayFragment"
             app:destination="@id/geziDetayFragment" />
         <argument
-            android:name="secilenSehir"
+            android:name="secilensehir"
             app:argType="com.example.seyahatnamem.model.Sehir" />
     </fragment>
     <fragment
@@ -92,7 +97,7 @@
         android:label="fragment_gezi_detay"
         tools:layout="@layout/fragment_gezi_detay" >
         <argument
-            android:name="secilenGezi"
+            android:name="geziListe"
             app:argType="com.example.seyahatnamem.model.Gezi" />
     </fragment>
 </navigation>
