@@ -70,4 +70,9 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("com.squareup.picasso:picasso:2.8")
+
+    //Profil resmini yuvarlak göstermek için kullanılan kütüphaneler
+    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
 }

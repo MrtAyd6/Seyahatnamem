@@ -5,19 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img"
+    android:background="#F8F6FD"
     tools:context=".view.GirisFragment">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="364dp"
+        android:layout_height="156dp"
         android:layout_marginTop="61dp"
+        android:background="#F8F6FD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_account_circle_24" />
+        app:srcCompat="@drawable/img_10" />
 
     <EditText
         android:id="@+id/EmailText"
@@ -26,10 +27,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/edittextarkaplan"
+        android:background="@drawable/edittext_background"
         android:drawableLeft="@drawable/kucuk_account"
         android:ems="10"
-        android:hint="Email adresinizi giriniz"
+        android:hint="Mail adresinizi giriniz"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +45,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/edittextarkaplan"
+        android:background="@drawable/edittext_background"
         android:drawableLeft="@drawable/baseline_lock_24"
         android:ems="10"
         android:hint="Parola"
@@ -54,26 +55,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmailText" />
 
+
     <Button
         android:id="@+id/girisButonu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/buttonarkaplan"
+        android:layout_width="174dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/edittext_background"
+        android:onClick="girisYap"
         android:text="Giriş Yap"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ParolaText" />
 
-    <Button
+    <TextView
         android:id="@+id/kaydolmaButonu"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
-        android:background="@drawable/edittextarkaplan"
-        android:text="Kaydol"
+        android:layout_marginTop="40dp"
+        android:background="#F8F6FD"
+        android:gravity="center"
+        android:onClick="kaydol"
+        android:text="Hesabın yok mu?Kayıt ol!"
+        android:textColor="#021BE4"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/girisButonu" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/girisButonu" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

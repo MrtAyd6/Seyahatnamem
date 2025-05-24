@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.example.seyahatnamem.R
 
 import com.example.seyahatnamem.databinding.FragmentSehirEkleBinding
@@ -47,13 +48,16 @@ class SehirEkleFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var db : FirebaseFirestore
     private lateinit var auth : FirebaseAuth
-
+    private var sehirListesi  = arrayOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = Firebase.firestore
         auth = Firebase.auth
         //val db = FirebaseFirestore.getInstance(FirebaseFirestoreOptions.Builder().setDatabaseId("seyahatnamem").build())
+        arguments?.let {
+            sehirListesi = SehirEkleFragmentArgs.fromBundle(it).sehirListesi
+        }
     }
 
     override fun onCreateView(
@@ -104,26 +108,37 @@ class SehirEkleFragment : Fragment() {
 
 
     private fun kaydet(view: View) {
+
         val eklenecekSehir = binding.sehirAutoComplete.text.toString()
         val kullaniciEmail = FirebaseAuth.getInstance().currentUser?.email
         val sehirMap = hashMapOf<String, Any>()
-        if (eklenecekSehir == "Şehir Seç" || eklenecekSehir.isEmpty()) {
-            Toast.makeText(requireContext(), "şehir seçimini kontrol et", Toast.LENGTH_LONG).show()
-        } else {
-            sehirMap.put("Sehir_adi",eklenecekSehir)
-            sehirMap.put("ID",kullaniciEmail!!)
+
+        if(sehirListesi.contains(binding.sehirAutoComplete.text.toString())){
+            //eger eklenmek istenen sehir zaten daha onceden ekli ise
+            Toast.makeText(requireContext(),"Sehir zaten ekli!",Toast.LENGTH_SHORT).show()
+        }else {
+            //eger eklenmek istenen sehir daha once eklenmemeisse
+            if (eklenecekSehir == "Şehir Seç" || eklenecekSehir.isEmpty()) {
+                Toast.makeText(requireContext(), "şehir seçimini kontrol et", Toast.LENGTH_LONG)
+                    .show()
+            } else {
+                sehirMap.put("Sehir_adi", eklenecekSehir)
+                sehirMap.put("ID", kullaniciEmail!!)
 
 
-            db.collection("Sehirler").add(sehirMap).addOnSuccessListener { documentReference ->
-                //veri database yüklendi
-                Toast.makeText(requireContext(), "şehir eklendi", Toast.LENGTH_LONG).show()
-                val action = SehirEkleFragmentDirections.actionSehirEkleFragmentToSeyahatlerimFragment()
-                Navigation.findNavController(view).navigate(action)
+                db.collection("Sehirler").add(sehirMap).addOnSuccessListener { documentReference ->
+                    //veri database'e yüklendi
+                    Toast.makeText(requireContext(), "şehir eklendi", Toast.LENGTH_LONG).show()
+                    val action =
+                        SehirEkleFragmentDirections.actionSehirEkleFragmentToSeyahatlerimFragment()
+                    Navigation.findNavController(view).navigate(action)
 
-            }.addOnFailureListener { exception ->
-                Toast.makeText(requireContext(), exception.localizedMessage, Toast.LENGTH_LONG).show()
+                }.addOnFailureListener { exception ->
+                    Toast.makeText(requireContext(), exception.localizedMessage, Toast.LENGTH_LONG)
+                        .show()
+                }
+
             }
-
         }
     }
 

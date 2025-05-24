@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seyahatnamem.R
@@ -54,8 +55,8 @@ class SehirDetayFragment : Fragment() {
         }
         firestoreVerileriAl()
         binding.geziEkleButton.setOnClickListener { geziEkle(it) }
-
-        adapter = GezilerimAdapter(geziListe)
+        binding.sehirSilButton.setOnClickListener { sehirSil(it) }
+        adapter = GezilerimAdapter(geziListe,secilenSehir)
         binding.geziRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.geziRecycler.adapter = adapter
 
@@ -66,8 +67,6 @@ class SehirDetayFragment : Fragment() {
     private  fun firestoreVerileriAl() {
 
         val targetEmail = FirebaseAuth.getInstance().currentUser?.email
-
-
 
         db.collection("Sehirler").whereEqualTo("ID", targetEmail)
             .whereEqualTo("Sehir_adi", secilenSehir.sehirAdi).get()
@@ -105,7 +104,7 @@ class SehirDetayFragment : Fragment() {
 
                 }
             }.addOnFailureListener {
-            Toast.makeText(requireContext(), "Gezi eklenemedi!!!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Sehir bulunamadı!!!", Toast.LENGTH_LONG).show()
         }
 
 
@@ -118,6 +117,33 @@ class SehirDetayFragment : Fragment() {
         }
     }
 
+    private fun sehirSil(view: View) {
+        val targetEmail = FirebaseAuth.getInstance().currentUser?.email
+
+        db.collection("Sehirler").whereEqualTo("ID", targetEmail)
+            .whereEqualTo("Sehir_adi", secilenSehir.sehirAdi).get()
+            .addOnSuccessListener { documents ->
+
+                for (document in documents) {
+                    documentID = document.id
+                }
+
+                db.collection("Sehirler").document(documentID).delete().addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Şehir ve geziler silindi", Toast.LENGTH_LONG)
+                        .show()
+                    val action = SehirDetayFragmentDirections.actionSehirDetayFragmentToSeyahatlerimFragment()
+                    val navOptions = NavOptions.Builder().setPopUpTo(R.id.nav_graph, true).build() // geri dönmesin
+                    Navigation.findNavController(view).navigate(action,navOptions)
+
+
+                }.addOnFailureListener {
+                    Toast.makeText(requireContext(), "Şehir silinemedi", Toast.LENGTH_LONG).show()
+                }
+
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(),"Şehir bulunamadı..", Toast.LENGTH_LONG).show()
+            }
+    }
 
 
     override fun onDestroyView() {
