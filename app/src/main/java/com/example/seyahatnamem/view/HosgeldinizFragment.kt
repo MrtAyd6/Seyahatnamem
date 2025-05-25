@@ -1,7 +1,9 @@
 package com.example.seyahatnamem.view
 
+import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -16,6 +18,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import com.example.seyahatnamem.R
@@ -23,6 +27,7 @@ import com.example.seyahatnamem.databinding.FragmentHosgeldinizBinding
 import com.example.seyahatnamem.model.Gezi
 import com.example.seyahatnamem.model.Kullanici
 import com.example.seyahatnamem.model.Sehir
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -42,6 +47,7 @@ class HosgeldinizFragment : Fragment() {
     var secilenBitmap : Bitmap? = null
     private lateinit var auth : FirebaseAuth
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
+    private lateinit var permissionLauncher: ActivityResultLauncher<String>
     private lateinit var storage: FirebaseStorage
     private lateinit var db : FirebaseFirestore
     private lateinit var documentID : String
@@ -108,8 +114,50 @@ class HosgeldinizFragment : Fragment() {
     }
 
     fun profilResmiEkle(view:View){
-        val intentToGalery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        activityResultLauncher.launch(intentToGalery)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+            //read media images
+            if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED){
+                //izin yok
+                if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.READ_MEDIA_IMAGES)){
+                    //izin mantığını kullanıcıya göstermemiz lazım
+                    Snackbar.make(view,"Galeriye gitmek icin izin vermeniz gerekşyor", Snackbar.LENGTH_INDEFINITE).setAction("İzin ver",
+                        View.OnClickListener{
+                            //izin istememiz lazım
+                            permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
+                        }).show()
+                }else{
+                    //isin istememiz lazım
+                    permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
+                }
+            }else{
+                //izin var
+                //galeriye gitme kodu
+                val intentToGalery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                activityResultLauncher.launch(intentToGalery)
+            }
+
+        }else{
+            //read external strorage
+            if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                //izin yok
+                if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)){
+                    //izin mantığını kullanıcıya göstermemiz lazım
+                    Snackbar.make(view,"Galeriye gitmek icin izin vermeniz gerekiyor", Snackbar.LENGTH_INDEFINITE).setAction("İzin ver",
+                        View.OnClickListener{
+                            //izin istememiz lazım
+                            permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+                        }).show()
+                }else{
+                    //isin istememiz lazım
+                    permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+                }
+            }else{
+                //izin var
+                //galeriye gitme kodu
+                val intentToGalery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                activityResultLauncher.launch(intentToGalery)
+            }
+        }
     }
 
     private fun registerLaunchers() {
@@ -144,6 +192,17 @@ class HosgeldinizFragment : Fragment() {
                 }
             }
 
+        permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){result ->
+            if(result) {
+                //izin verildi
+                val intentToGalery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                activityResultLauncher.launch(intentToGalery)
+            }else{
+                //kullanıcı izni reddetti
+                Toast.makeText(requireContext(),"İzni reddettiniz", Toast.LENGTH_LONG).show()
+            }
+        }
+
     }
 
 
@@ -170,19 +229,16 @@ class HosgeldinizFragment : Fragment() {
                         profilFotoMap.put("sifre","*******")
                         db.collection("KullaniciBilgi").add(profilFotoMap).addOnSuccessListener { documentReference ->
                             //veri database'e yüklendi
-                            Toast.makeText(requireContext(), "Profil resmi güncellendi", Toast.LENGTH_SHORT).show()
+                            context?.let {
+                                Toast.makeText(it, "Profil resmi güncellendi", Toast.LENGTH_SHORT).show()
+                            }
 
                         }.addOnFailureListener { exception ->
                             Toast.makeText(requireContext(), "Tekrar deneyiniz", Toast.LENGTH_LONG).show()
                         }
                         }
                     }
-
-
                 }
-
-
-
         }
 
     }
@@ -206,7 +262,12 @@ class HosgeldinizFragment : Fragment() {
                             val kullanici = Kullanici("${targetEmail}","*****",ppUrl)
                             kullaniciBilgiListesi.add(kullanici)
                         }
-                       val pp = Picasso.get().load(kullaniciBilgiListesi[0].profilResmi).into(binding.profilResmi)
+                       //val pp = Picasso.get().load(kullaniciBilgiListesi[0].profilResmi).into(binding.profilResmi)
+                        _binding?.let { binding ->
+                            Picasso.get()
+                                .load(kullaniciBilgiListesi[0].profilResmi)
+                                .into(binding.profilResmi)
+                        }
                     }
                 }
             }
@@ -240,8 +301,6 @@ class HosgeldinizFragment : Fragment() {
                 }
             }
         }
-
-
     }
 
     override fun onDestroyView() {

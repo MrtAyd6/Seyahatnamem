@@ -78,6 +78,11 @@
         <argument
             android:name="secilensehir"
             app:argType="com.example.seyahatnamem.model.Sehir" />
+        <action
+            android:id="@+id/action_sehirDetayFragment_to_seyahatlerimFragment"
+            app:popUpTo="@id/sehirDetayFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/seyahatlerimFragment" />
     </fragment>
     <fragment
         android:id="@+id/geziEkleFragment"
@@ -99,5 +104,31 @@
         <argument
             android:name="geziListe"
             app:argType="com.example.seyahatnamem.model.Gezi" />
+        <action
+            android:id="@+id/action_geziDetayFragment_to_sehirDetayFragment"
+            app:popUpTo="@id/geziDetayFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/sehirDetayFragment" />
+        <argument
+            android:name="secilenSehir"
+            app:argType="com.example.seyahatnamem.model.Sehir" />
+        <action
+            android:id="@+id/action_geziDetayFragment_to_yorumGuncelleFragment"
+            app:destination="@id/yorumGuncelleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yorumGuncelleFragment"
+        android:name="com.example.seyahatnamem.view.YorumGuncelleFragment"
+        android:label="fragment_yorum_guncelle"
+        tools:layout="@layout/fragment_yorum_guncelle" >
+        <action
+            android:id="@+id/action_yorumGuncelleFragment_to_geziDetayFragment"
+            app:destination="@id/geziDetayFragment" />
+        <argument
+            android:name="geziListe"
+            app:argType="com.example.seyahatnamem.model.Gezi" />
+        <argument
+            android:name="secilenSehir"
+            app:argType="com.example.seyahatnamem.model.Sehir" />
     </fragment>
 </navigation>

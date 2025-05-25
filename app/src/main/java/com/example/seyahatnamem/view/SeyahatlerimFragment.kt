@@ -21,6 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
 import com.squareup.picasso.Picasso
+import java.text.Collator
+import java.util.Locale
 
 
 class SeyahatlerimFragment : Fragment() {
@@ -84,6 +86,8 @@ class SeyahatlerimFragment : Fragment() {
                             Log.d("SEHIREKLEME","EKLENEN SEHIR BILGILERI" + sehirAdi)
                             sehirList.add(sehir)
                         }
+                        val language = Collator.getInstance(Locale("tr","TR")) //Türkçe dil desteği sağlamak için
+                        sehirList.sortWith(compareBy(language){it.sehirAdi})//Şehir listesini Türkçe alfabetik sırasına göre ayarlar
                         adapter?.notifyDataSetChanged() //adaptörü güncellemek icin
 
                     }
@@ -128,7 +132,12 @@ class SeyahatlerimFragment : Fragment() {
                             val kullanici = Kullanici("${targetEmail}","*****",ppUrl)
                             kullaniciBilgiListesi.add(kullanici)
                         }
-                        val pp = Picasso.get().load(kullaniciBilgiListesi[0].profilResmi).into(binding.profilSayfasinaGitButonu)
+                        //Picasso.get().load(kullaniciBilgiListesi[0].profilResmi).into(binding.profilSayfasinaGitButonu)
+                        _binding?.let { binding ->
+                            Picasso.get()
+                                .load(kullaniciBilgiListesi[0].profilResmi)
+                                .into(binding.profilSayfasinaGitButonu)
+                        }
                     }
                 }
             }
