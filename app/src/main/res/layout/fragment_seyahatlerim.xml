@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F6FD"
     tools:context=".view.SeyahatlerimFragment">
 
 
@@ -24,12 +25,22 @@
         android:id="@+id/seyahatEkleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilSayfasinaGitButonu"
+        android:layout_width="74dp"
+        android:layout_height="83dp"
+        android:layout_marginEnd="30dp"
+        android:onClick="profileGit"
+        android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

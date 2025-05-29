@@ -4,17 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F6FD"
     tools:context=".view.SehirEkleFragment">
 
 
     <Button
         android:id="@+id/kaydetButton"
-        android:layout_width="143dp"
-        android:layout_height="64dp"
-        android:text="Kaydet"
-        android:textSize="25dp"
+        android:layout_width="140dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Şehir ekle"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:translationZ="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sehirAutoComplete" />
+
+    <AutoCompleteTextView
+        android:id="@+id/sehirAutoComplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/edittext_background"
+        android:dropDownHeight="200dp"
+        android:hint="Şehir seçiniz"
+        android:textColorHint="@color/black"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

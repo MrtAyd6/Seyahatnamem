@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "204965532819",
+    "project_id": "seyahatnamem-40741",
+    "storage_bucket": "seyahatnamem-40741.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204965532819:android:f789bc354dc6f043e0a966",
+        "android_client_info": {
+          "package_name": "com.example.seyahatnamem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClRYLJMoNnSukhzv9qy17N3tm2liegdGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
